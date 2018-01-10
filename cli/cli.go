@@ -1,7 +1,6 @@
 package cli
 
 import (
-	"fmt"
 	"github.com/mdzhang/kpxcconvert/kpxc"
 	"github.com/mdzhang/kpxcconvert/logger"
 	"github.com/mdzhang/kpxcconvert/opass"
@@ -13,8 +12,8 @@ import (
 // CLI flags
 var (
 	group = kingpin.Flag("group", "Group to place secrets in e.g. a 1Password vault name").Short('g').Required().String()
-	opif  = kingpin.Flag("opif", "Path to 1Password .1pif export to convert").Short('o').Required().String()
-	kpxc  = kingpin.Flag("kpxc", "Path to output KeePassXC compatible CSV file").Short('k').Required().String()
+	op    = kingpin.Flag("op", "Path to 1Password .1pif export to convert").Short('o').Required().String()
+	kp    = kingpin.Flag("kp", "Path to output KeePassXC compatible CSV file").Short('k').Required().String()
 )
 
 func check(e error) {
@@ -31,15 +30,19 @@ func Run() {
 	kingpin.Parse()
 
 	logger.Info("Reading 1Password file...")
-	file, err := os.Open(*opif)
+	file, err := os.Open(*op)
 	check(err)
 	defer file.Close()
 
 	logger.Info("Parsing 1Password file...")
-	secrets := opass.ParseSecrets(file, group)
+	secrets := opass.ParseSecrets(file, *group)
+
+	outfile, err := os.Create(*kp)
+	check(err)
+	defer outfile.Close()
 
 	logger.Info("Writing KeePassXC CSV file...")
-	kpxc.GenerateKpxc(secrets, *kpxc)
+	kpxc.GenerateKpxc(secrets, outfile)
 
 	logger.Info("Ran successfully")
 }

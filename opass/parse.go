@@ -2,18 +2,23 @@ package opass
 
 import (
 	"bufio"
-	"json"
+	"encoding/json"
+	"fmt"
+	"github.com/mdzhang/kpxcconvert/logger"
+	"github.com/mdzhang/kpxcconvert/secret"
 	"os"
 	"strings"
 )
 
 // ParseSecrets parses secret.Secrets from a file
-func ParseSecrets(f *os.File, grp string) *Secret {
-	var ret []Secret
+func ParseSecrets(f *os.File, grp string) []*secret.Secret {
+	var ret []*secret.Secret
 
 	scanner := bufio.NewScanner(f)
+
 	for scanner.Scan() {
 		line := scanner.Text()
+		logger.Info(fmt.Sprintf("Reading line %s", line))
 		sec := Secret{}
 
 		// ignore lines starting with ***
@@ -25,7 +30,7 @@ func ParseSecrets(f *os.File, grp string) *Secret {
 			panic(err)
 		}
 
-		append(ret, sec.secret(grp))
+		ret = append(ret, sec.secret(grp))
 	}
 
 	return ret

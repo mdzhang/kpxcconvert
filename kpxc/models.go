@@ -1,4 +1,4 @@
-package gen
+package kpxc
 
 import (
 	"github.com/ghodss/yaml"
@@ -17,29 +17,37 @@ type Secret struct {
 
 // fromSecret converts between a kpxc.Secret and the more
 // generic secret.Secret
-func fromSecret(sec *secret.Secret) {
+func fromSecret(sec *secret.Secret) *Secret {
 	// TODO: write sec.Extras to yaml notes
-	var url string
+	url := ""
+	var otherUrls []string
 	var notes string
 
-	if len(sec.Urls) == 0 {
-		url = nil
-		notes = nil
-	} else if len(sec.Urls) == 1 {
+	if len(sec.Urls) == 1 {
 		url = sec.Urls[0]
-		notes = nil
-	} else {
+	} else if len(sec.Urls) > 1 {
 		url = sec.Urls[0]
-		otherUrls := sec.Urls[1:]
+		otherUrls = sec.Urls[1:]
 	}
 
-	notes = yaml.Marshal(struct {
-		Urls []string
-	}{
-		Urls: otherUrls,
-	})
+	if len(otherUrls) > 0 {
+		notesBytes, err := yaml.Marshal(struct {
+			Urls []string
+		}{
+			Urls: otherUrls,
+		})
+
+		if err != nil {
+			panic(err)
+		}
+
+		notes = string(notesBytes)
+	} else {
+		notes = ""
+	}
 
 	ksec := &Secret{
+		Group:    sec.Group,
 		Title:    sec.Name,
 		Username: sec.Username,
 		Password: sec.Password,

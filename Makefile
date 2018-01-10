@@ -33,6 +33,9 @@ lint:
 	@golint cli/
 	@golint logger/
 	@golint version/
+	@golint kpxc/
+	@golint opass/
+	@golint secret/
 
 format:
 	@gofmt -w .
@@ -44,6 +47,9 @@ test: lint
 	@go test -v -race cli/*.go
 	@go test -v -race logger/*.go
 	@go test -v -race version/*.go
+	@go test -v -race kpxc/*.go
+	@go test -v -race opass/*.go
+	@go test -v -race secret/*.go
 
 install:
 	@glide install

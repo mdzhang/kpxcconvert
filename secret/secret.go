@@ -2,6 +2,7 @@ package secret
 
 // Secret represents any entry in a password manager
 type Secret struct {
+	Group    string
 	Name     string
 	Username string
 	Password string
