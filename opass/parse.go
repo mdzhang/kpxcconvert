@@ -19,18 +19,22 @@ func ParseSecrets(f *os.File, grp string) []*secret.Secret {
 	for scanner.Scan() {
 		line := scanner.Text()
 		logger.Info(fmt.Sprintf("Reading line %s", line))
-		sec := Secret{}
+		osec := Secret{}
 
 		// ignore lines starting with ***
 		if strings.HasPrefix(line, "***") {
 			continue
 		}
 
-		if err := json.Unmarshal([]byte(line), &sec); err != nil {
+		if err := json.Unmarshal([]byte(line), &osec); err != nil {
 			panic(err)
 		}
 
-		ret = append(ret, sec.secret(grp))
+		sec := osec.secret(grp)
+
+		if sec != nil {
+			ret = append(ret, sec)
+		}
 	}
 
 	return ret

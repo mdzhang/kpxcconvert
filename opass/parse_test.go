@@ -40,3 +40,10 @@ func TestParseSecrets(t *testing.T) {
 	st.Expect(t, 1, len(secs))
 	st.Expect(t, esec, secs[0])
 }
+
+func TestParseSecretsSkipPassword(t *testing.T) {
+	f := helperOpenFile(t, "opass_with_pw.1pif")
+	secs := ParseSecrets(f, "Primary")
+
+	st.Expect(t, 0, len(secs))
+}

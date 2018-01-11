@@ -6,10 +6,11 @@ import (
 
 // Field stores data about a 1Password entry custom attribute
 type Field struct {
-	Value string `json:"value"`
-	Name  string `json:"name"`
-	ID    string `json:"id"`
-	Type  string `json:"type"`
+	Value       string `json:"value"`
+	Designation string `json:"designation"`
+	Name        string `json:"name"`
+	ID          string `json:"id"`
+	Type        string `json:"type"`
 }
 
 // URL wraps a url string
@@ -40,9 +41,11 @@ type Secret struct {
 	SecureContents SecureContent `json:"secureContents"`
 }
 
-func (osec *Secret) lookupFieldByName(name string) string {
+func (osec *Secret) lookupField(field string, value string) string {
 	for _, f := range osec.SecureContents.Fields {
-		if f.Name == name {
+		if field == "name" && f.Name == value {
+			return f.Value
+		} else if field == "designation" && f.Designation == value {
 			return f.Value
 		}
 	}
@@ -51,11 +54,16 @@ func (osec *Secret) lookupFieldByName(name string) string {
 }
 
 func (osec *Secret) username() string {
-	return osec.lookupFieldByName("username")
+	username := osec.lookupField("name", "username")
+
+	if username == "" {
+		username = osec.lookupField("designation", "username")
+	}
+	return username
 }
 
 func (osec *Secret) password() string {
-	return osec.lookupFieldByName("password")
+	return osec.lookupField("name", "password")
 }
 
 func (osec *Secret) urls() []string {
@@ -77,6 +85,10 @@ func (osec *Secret) secret(grp string) *secret.Secret {
 		Username: osec.username(),
 		Password: osec.password(),
 		Urls:     osec.urls(),
+	}
+
+	if osec.TypeName == "passwords.Password" {
+		return nil
 	}
 	return sec
 }
