@@ -20,10 +20,12 @@ type URL struct {
 
 // SecureContent stores seemingly arbitrary 1Password entry metadata
 type SecureContent struct {
-	URLs       []URL   `json:"URLs"`
-	HTMLMethod string  `json:"htmlMethod"`
-	Fields     []Field `json:"fields"`
-	Notes      string  `json:"notesPlain"`
+	URLs             []URL   `json:"URLs"`
+	HTMLMethod       string  `json:"htmlMethod"`
+	Fields           []Field `json:"fields"`
+	Notes            string  `json:"notesPlain"`
+	NetworkName      string  `json:"network_name"`
+	WirelessPassword string  `json:"wireless_password"`
 }
 
 // Secret holds all fields exported for a given 1Password entry
@@ -55,6 +57,10 @@ func (osec *Secret) lookupField(field string, value string) string {
 }
 
 func (osec *Secret) username() string {
+	if osec.TypeName == "wallet.computer.Router" {
+		return osec.SecureContents.NetworkName
+	}
+
 	username := osec.lookupField("name", "username")
 
 	if username == "" {
@@ -64,6 +70,10 @@ func (osec *Secret) username() string {
 }
 
 func (osec *Secret) password() string {
+	if osec.TypeName == "wallet.computer.Router" {
+		return osec.SecureContents.WirelessPassword
+	}
+
 	return osec.lookupField("name", "password")
 }
 

@@ -47,3 +47,18 @@ func TestParseSecretsSkipPassword(t *testing.T) {
 
 	st.Expect(t, 0, len(secs))
 }
+
+func TestParseRouter(t *testing.T) {
+	f := helperOpenFile(t, "opass_router.1pif")
+	secs := ParseSecrets(f, "Primary")
+
+	esec := &secret.Secret{
+		Group:    "Primary",
+		Name:     "Nickname for network in 1pass",
+		Username: "Wifi SSID",
+		Password: "password1234",
+	}
+
+	st.Expect(t, 1, len(secs))
+	st.Expect(t, esec, secs[0])
+}
