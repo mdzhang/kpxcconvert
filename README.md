@@ -1,6 +1,8 @@
 # kpxcconvert
 
-A CLI tool for converting 1Password export files to KeePassXC import files
+A CLI tool for converting 1Password export files to KeePassXC import files.
+
+Confirmed with 1Password 6.8.3 and KeePassXC 2.2.4
 
 ## Usage
 
