@@ -16,9 +16,17 @@ kpxcconvert --group Primary --op ~/Documents/1Password\ 2018-01-09,\ 08_23\ PM\ 
 ```
 ## Installation
 
+##### For non-gophers
+
 - Download the platform-specific tarball
 - `sudo tar xvfz kpxcconvert.tar.gz -C /usr/local/bin`
 - `sudo chmod +x /usr/local/bin/kpxcconvert`
+
+##### For gophers
+
+```sh
+go get github.com/mdzhang/kpxcconvert
+```
 
 ## What it does
 
