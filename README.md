@@ -5,6 +5,7 @@ A CLI tool for converting 1Password export files to KeePassXC import files.
 Confirmed with 1Password 6.8.3 and KeePassXC 2.2.4
 
 [![Go Report](https://img.shields.io/badge/go%20report-A%2B-brightgreen.svg)](https://goreportcard.com/report/github.com/mdzhang/kpxcconvert)
+[![GoDoc](https://godoc.org/github.com/mdzhang/kpxcconvert?status.svg)](https://godoc.org/github.com/mdzhang/kpxcconvert)
 
 ## Usage
 
