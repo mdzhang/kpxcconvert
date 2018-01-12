@@ -4,6 +4,8 @@ A CLI tool for converting 1Password export files to KeePassXC import files.
 
 Confirmed with 1Password 6.8.3 and KeePassXC 2.2.4
 
+[![Go Report](https://img.shields.io/badge/go%20report-A%2B-brightgreen.svg)](https://goreportcard.com/report/github.com/mdzhang/kpxcconvert)
+
 ## Usage
 
 Say you export your 1Password vault data to `~/Documents/1Password\ 2018-01-09,\ 08_23\ PM\ \(99\ items\ and\ 0\ folders\).1pif` for a vault called "Primary" and you want to generate a KeePassXC CSV-import compatible CSV called `out.csv`. Then you might run:
