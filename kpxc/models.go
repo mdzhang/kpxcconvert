@@ -15,10 +15,16 @@ type Secret struct {
 	Notes    string
 }
 
+// Extras is for holding other field data other password
+// managers may keep track of but KeePassXC does not
+type Extras struct {
+	URLs  []string `json:"URLs"`
+	Notes string   `json:"Notes"`
+}
+
 // fromSecret converts between a kpxc.Secret and the more
 // generic secret.Secret
 func fromSecret(sec *secret.Secret) *Secret {
-	// TODO: write sec.Extras to yaml notes
 	url := ""
 	var otherUrls []string
 	var notes string
@@ -30,23 +36,18 @@ func fromSecret(sec *secret.Secret) *Secret {
 		otherUrls = sec.Urls[1:]
 	}
 
-	if len(otherUrls) > 0 {
-		notesBytes, err := yaml.Marshal(struct {
-			Urls  []string
-			Notes string
-		}{
-			Urls:  otherUrls,
-			Notes: sec.Notes,
-		})
-
-		if err != nil {
-			panic(err)
-		}
-
-		notes = string(notesBytes)
-	} else {
-		notes = ""
+	extras := Extras{
+		URLs:  otherUrls,
+		Notes: sec.Notes,
 	}
+
+	notesBytes, err := yaml.Marshal(extras)
+
+	if err != nil {
+		panic(err)
+	}
+
+	notes = string(notesBytes)
 
 	ksec := &Secret{
 		Group:    sec.Group,

@@ -23,7 +23,7 @@ func TestFromSecretManyUrls(t *testing.T) {
 		Username: "mdzhang@example.com",
 		Password: "password1234",
 		URL:      "example.com",
-		Notes:    "Notes: \"\"\nUrls:\n- ex.com\n",
+		Notes:    "Notes: \"\"\nURLs:\n- ex.com\n",
 	}
 
 	st.Expect(t, ksec, esec)
@@ -35,7 +35,7 @@ func TestFromSecretSingleUrl(t *testing.T) {
 		Name:     "Example.com",
 		Username: "mdzhang@example.com",
 		Password: "password1234",
-		Urls:     []string{"example.com"},
+		Urls:     []string{"ex.com"},
 	}
 
 	ksec := fromSecret(sec)
@@ -45,8 +45,8 @@ func TestFromSecretSingleUrl(t *testing.T) {
 		Title:    "Example.com",
 		Username: "mdzhang@example.com",
 		Password: "password1234",
-		URL:      "example.com",
-		Notes:    "",
+		URL:      "ex.com",
+		Notes:    "Notes: \"\"\nURLs: null\n",
 	}
 
 	st.Expect(t, ksec, esec)
@@ -69,7 +69,7 @@ func TestFromSecretNoUrl(t *testing.T) {
 		Username: "mdzhang@example.com",
 		Password: "password1234",
 		URL:      "",
-		Notes:    "",
+		Notes:    "Notes: \"\"\nURLs: null\n",
 	}
 
 	st.Expect(t, ksec, esec)
@@ -93,7 +93,7 @@ func TestFromSecretHasNotes(t *testing.T) {
 		Username: "mdzhang@example.com",
 		Password: "password1234",
 		URL:      "",
-		Notes:    "",
+		Notes:    "Notes: some notes\nURLs: null\n",
 	}
 
 	st.Expect(t, ksec, esec)

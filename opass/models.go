@@ -96,14 +96,12 @@ func (osec *Secret) secret(grp string) *secret.Secret {
 		Username: osec.username(),
 		Password: osec.password(),
 		Urls:     osec.urls(),
+		Notes:    osec.SecureContents.Notes,
 	}
 
 	if osec.TypeName == "passwords.Password" {
 		return nil
 	}
 
-	if osec.TypeName == "securenotes.SecureNote" {
-		sec.Notes = osec.SecureContents.Notes
-	}
 	return sec
 }
