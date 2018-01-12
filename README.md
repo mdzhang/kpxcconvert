@@ -9,12 +9,27 @@ Say you export your 1Password vault data to `~/Documents/1Password\ 2018-01-09,\
 ```sh
 kpxcconvert --group Primary --op ~/Documents/1Password\ 2018-01-09,\ 08_23\ PM\ \(99\ items\ and\ 0\ folders\).1pif/data.1pif --kp out.csv
 ```
-
 ## Installation
 
 - Download the platform-specific tarball
 - `sudo tar xvfz kpxcconvert.tar.gz -C /usr/local/bin`
 - `sudo chmod +x /usr/local/bin/kpxcconvert`
+
+## What it does
+
+| 1Password entry type | Effects |
+| -------------------- | ------- |
+| login              | parse title, username, password, urls (extras go to KeePassXC notes field) |
+| password             | deliberately ignored |
+| router               | parse title, ssid as username, password |
+| secure notes         | parse title, notes |
+| credit cards         | X |
+| identities         | X |
+| licenses         | X |
+| SSN         | X |
+| bank account         | X |
+| email account         | X |
+| driver's licenses         | X |
 
 ## Development
 
