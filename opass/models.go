@@ -23,6 +23,7 @@ type SecureContent struct {
 	URLs       []URL   `json:"URLs"`
 	HTMLMethod string  `json:"htmlMethod"`
 	Fields     []Field `json:"fields"`
+	Notes      string  `json:"notesPlain"`
 }
 
 // Secret holds all fields exported for a given 1Password entry
@@ -89,6 +90,10 @@ func (osec *Secret) secret(grp string) *secret.Secret {
 
 	if osec.TypeName == "passwords.Password" {
 		return nil
+	}
+
+	if osec.TypeName == "securenotes.SecureNote" {
+		sec.Notes = osec.SecureContents.Notes
 	}
 	return sec
 }

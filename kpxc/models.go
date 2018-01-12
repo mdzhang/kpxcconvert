@@ -32,9 +32,11 @@ func fromSecret(sec *secret.Secret) *Secret {
 
 	if len(otherUrls) > 0 {
 		notesBytes, err := yaml.Marshal(struct {
-			Urls []string
+			Urls  []string
+			Notes string
 		}{
-			Urls: otherUrls,
+			Urls:  otherUrls,
+			Notes: sec.Notes,
 		})
 
 		if err != nil {

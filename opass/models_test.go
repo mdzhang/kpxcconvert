@@ -106,3 +106,25 @@ func TestPasswordTypeSecret(t *testing.T) {
 
 	st.Expect(t, reflect.ValueOf(sec).IsNil(), true)
 }
+
+func TestSecureNote(t *testing.T) {
+	contents := SecureContent{
+		Notes: "super secret note content",
+	}
+
+	osec := &Secret{
+		Title:          "Super secret note",
+		TypeName:       "securenotes.SecureNote",
+		SecureContents: contents,
+	}
+
+	esec := &secret.Secret{
+		Group: "Primary",
+		Name:  "Super secret note",
+		Notes: "super secret note content",
+	}
+
+	sec := osec.secret("Primary")
+
+	st.Expect(t, sec, esec)
+}
