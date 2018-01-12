@@ -1,0 +1,12 @@
+language: go
+
+go:
+  - 1.9
+
+install:
+  - go get -t ./...
+
+script:
+  - diff <(echo -n) <(gofmt -s -d .)
+  - go vet ./...
+  - go test -race ./...
