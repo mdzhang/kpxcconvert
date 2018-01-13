@@ -16,6 +16,7 @@ Say you export your 1Password vault data to `~/Documents/1Password\ 2018-01-09,\
 ```sh
 kpxcconvert --group Primary --op ~/Documents/1Password\ 2018-01-09,\ 08_23\ PM\ \(99\ items\ and\ 0\ folders\).1pif/data.1pif --kp out.csv
 ```
+
 ## Installation
 
 ##### For non-gophers
@@ -88,7 +89,7 @@ Run tests
   make test
   ```
 
-Lint code:
+Lint code
 
   ```sh
   make lint
@@ -105,3 +106,8 @@ Cross-platform packaging
   ```sh
   make package
   ```
+
+Cut a release
+
+- Tag a commit
+- Push the tag to Travis to trigger creating a Github release
