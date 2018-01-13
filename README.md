@@ -50,11 +50,8 @@ go get github.com/mdzhang/kpxcconvert
 
 ### Prerequisites
 
-- Go
-- golint - `go get -u github.com/golang/lint/golint`
-- gox - `go get -u github.com/mitchellh/gox`
-- glide - go dependency manager
-- delve - `go get -u github.com/derekparker/delve/cmd/dlv`
+- Go 1.9+
+- [glide](https://glide.sh) for dependency management
 
 ### Setup
 
@@ -71,10 +68,16 @@ Clone kpxcconvert
   git clone git@github.com:mdzhang/kpxcconvert.git
   ```
 
-Install dependencies:
+Install package dependencies:
 
   ```sh
-  glide install
+  make install
+  ```
+
+Install dev dependencies:
+
+  ```sh
+  make deps
   ```
 
 ### Tasks

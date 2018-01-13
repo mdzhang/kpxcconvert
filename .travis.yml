@@ -1,13 +1,21 @@
 language: go
-
 go:
-  - 1.9
-
+- 1.9
 install:
-  - go get -u github.com/golang/lint/golint
-  - go get -t ./...
-
+- make deps
+- go get -t ./...
 script:
-  - make test
-  - make vet
-  - make lint
+- make test
+- make vet
+- make lint
+env:
+  global:
+  - secure:
+deploy:
+- script:
+  - make release
+  skip_cleanup: true
+  on:
+    tags: true
+    condition:
+    - "$TRAVIS_OS_NAME = linux"

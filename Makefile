@@ -46,3 +46,12 @@ test:
 
 install:
 	@glide install
+
+deps:
+	go get -u github.com/golang/lint/golint
+	go get -u github.com/mitchellh/gox
+	go get -u github.com/derekparker/delve/cmd/dlv
+	go get -u github.com/c4milo/github-release
+
+release: package
+	./release.sh
