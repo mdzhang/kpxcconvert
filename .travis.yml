@@ -1,0 +1,13 @@
+language: go
+
+go:
+  - 1.9
+
+install:
+  - go get -u github.com/golang/lint/golint
+  - go get -t ./...
+
+script:
+  - make test
+  - make vet
+  - make lint
