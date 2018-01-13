@@ -20,7 +20,7 @@ kpxcconvert --group Primary --op ~/Documents/1Password\ 2018-01-09,\ 08_23\ PM\ 
 
 ##### For non-gophers
 
-- Download the platform-specific tarball
+- Download the platform-specific tarball from the [release page](https://github.com/mdzhang/kpxcconvert/releases)
 - `sudo tar xvfz kpxcconvert.tar.gz -C /usr/local/bin`
 - `sudo chmod +x /usr/local/bin/kpxcconvert`
 
