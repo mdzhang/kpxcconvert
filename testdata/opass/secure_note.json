@@ -1,0 +1,14 @@
+{
+  "uuid": "AB9186C6DA6B4081A07FF937EFEF93F8",
+  "updatedAt": 1515014366,
+  "locationKey": "example.com",
+  "securityLevel": "SL5",
+  "contentsHash": "f0563ae",
+  "title": "Note title",
+  "secureContents": {
+    "notesPlain": "secret note"
+  },
+  "txTimestamp": 1515071111,
+  "createdAt": 1515014366,
+  "typeName": "securenotes.SecureNote"
+}
