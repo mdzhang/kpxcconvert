@@ -1,0 +1,191 @@
+{
+  "uuid": "AB9186C6DA6B4081A07FF937EFEF93F8",
+  "updatedAt": 1502481067,
+  "securityLevel": "SL5",
+  "contentsHash": "f0563ae",
+  "title": "My Example Visa Credit Card",
+  "secureContents": {
+    "expiry_yy": "2030",
+    "expiry_mm": "12",
+    "sections": [
+      {
+        "fields": [
+          {
+            "k": "string",
+            "inputTraits": {
+              "autocapitalization": "Words",
+              "keyboard": "Default"
+            },
+            "n": "cardholder",
+            "v": "Michelle D Zhang",
+            "a": {
+              "guarded": "yes"
+            },
+            "t": "cardholder name"
+          },
+          {
+            "k": "cctype",
+            "v": "visa",
+            "n": "type",
+            "a": {
+              "guarded": "yes"
+            },
+            "t": "type"
+          },
+          {
+            "k": "string",
+            "inputTraits": {
+              "keyboard": "NumberPad"
+            },
+            "n": "ccnum",
+            "v": "4111111111111111",
+            "a": {
+              "guarded": "yes",
+              "clipboardFilter": "0123456789"
+            },
+            "t": "number"
+          },
+          {
+            "k": "concealed",
+            "inputTraits": {
+              "keyboard": "NumberPad"
+            },
+            "n": "cvv",
+            "v": "999",
+            "a": {
+              "generate": "off",
+              "guarded": "yes"
+            },
+            "t": "verification number"
+          },
+          {
+            "k": "monthYear",
+            "v": 203012,
+            "n": "expiry",
+            "a": {
+              "guarded": "yes"
+            },
+            "t": "expiry date"
+          },
+          {
+            "k": "monthYear",
+            "n": "validFrom",
+            "a": {
+              "guarded": "yes"
+            },
+            "t": "valid from"
+          },
+          {
+            "k": "string",
+            "n": "AB9186C6DA6B4081A07FF937EFEF93F8",
+            "v": "5.09",
+            "t": "balance"
+          }
+        ],
+        "title": "",
+        "name": ""
+      },
+      {
+        "fields": [
+          {
+            "k": "string",
+            "n": "bank",
+            "inputTraits": {
+              "autocapitalization": "Words",
+              "keyboard": "Default"
+            },
+            "t": "issuing bank"
+          },
+          {
+            "k": "phone",
+            "n": "phoneLocal",
+            "inputTraits": {
+              "keyboard": "NamePhonePad"
+            },
+            "t": "phone (local)"
+          },
+          {
+            "k": "phone",
+            "n": "phoneTollFree",
+            "inputTraits": {
+              "keyboard": "NamePhonePad"
+            },
+            "t": "phone (toll free)"
+          },
+          {
+            "k": "phone",
+            "n": "phoneIntl",
+            "inputTraits": {
+              "keyboard": "NamePhonePad"
+            },
+            "t": "phone (intl)"
+          },
+          {
+            "k": "URL",
+            "n": "website",
+            "t": "website"
+          }
+        ],
+        "title": "Contact Information",
+        "name": "contactInfo"
+      },
+      {
+        "fields": [
+          {
+            "k": "concealed",
+            "n": "pin",
+            "inputTraits": {
+              "keyboard": "NumberPad"
+            },
+            "t": "PIN"
+          },
+          {
+            "k": "string",
+            "n": "creditLimit",
+            "inputTraits": {
+              "keyboard": "NumbersAndPunctuation"
+            },
+            "t": "credit limit"
+          },
+          {
+            "k": "string",
+            "n": "cashLimit",
+            "inputTraits": {
+              "keyboard": "NumbersAndPunctuation"
+            },
+            "t": "cash withdrawal limit"
+          },
+          {
+            "k": "string",
+            "n": "interest",
+            "inputTraits": {
+              "keyboard": "NumbersAndPunctuation"
+            },
+            "t": "interest rate"
+          },
+          {
+            "k": "string",
+            "n": "issuenumber",
+            "inputTraits": {
+              "autocorrection": "no"
+            },
+            "t": "issue number"
+          }
+        ],
+        "title": "Additional Details",
+        "name": "details"
+      },
+      {
+        "title": "Related Items",
+        "name": "linked items"
+      }
+    ],
+    "cardholder": "Michelle D Zhang",
+    "cvv": "999",
+    "type": "visa",
+    "ccnum": "4111111111111111"
+  },
+  "txTimestamp": 1508717110,
+  "createdAt": 1475945801,
+  "typeName": "wallet.financial.CreditCard"
+}

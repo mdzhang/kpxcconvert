@@ -51,6 +51,10 @@ func TestParseLogin(t *testing.T) {
 		Username: "mdzhang@example.com",
 		Password: "password1234",
 		Urls:     []string{"example.com", "ex.com"},
+		Extras: map[string]string{
+			"username": "mdzhang@example.com",
+			"password": "password1234",
+		},
 	}
 
 	st.Expect(t, esec, sec)
@@ -70,6 +74,11 @@ func TestParseRouter(t *testing.T) {
 		Name:     "Nickname for network in 1pass",
 		Username: "Wifi SSID",
 		Password: "password1234",
+		Extras: map[string]string{
+			"network name":              "Wifi SSID",
+			"wireless security":         "wpa2p",
+			"wireless network password": "password1234",
+		},
 	}
 
 	st.Expect(t, esec, sec)
@@ -79,9 +88,33 @@ func TestParseSecureNote(t *testing.T) {
 	sec := helperParseSecret(t, "secure_note", "Primary")
 
 	esec := &secret.Secret{
-		Group: "Primary",
-		Name:  "Note title",
-		Notes: "secret note",
+		Group:  "Primary",
+		Name:   "Note title",
+		Notes:  "secret note",
+		Extras: make(map[string]string),
+	}
+
+	st.Expect(t, esec, sec)
+}
+
+func TestParseCreditCard(t *testing.T) {
+	sec := helperParseSecret(t, "credit_card", "Primary")
+
+	extras := map[string]string{
+		"cardholder name":     "Michelle D Zhang",
+		"type":                "visa",
+		"number":              "4111111111111111",
+		"verification number": "999",
+		"expiry date":         "203012",
+		"balance":             "5.09",
+	}
+
+	esec := &secret.Secret{
+		Group:    "Primary",
+		Name:     "My Example Visa Credit Card",
+		Username: "Michelle D Zhang",
+		Password: "4111111111111111",
+		Extras:   extras,
 	}
 
 	st.Expect(t, esec, sec)
