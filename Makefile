@@ -3,7 +3,7 @@ NO_COLOR=\033[0m
 BUILD_REF ?= $(shell git rev-parse --verify HEAD)
 VERSION := $(shell git describe --tags --abbrev=0)
 PROJECT_NAME=kpxcconvert
-SRC = "*.go cli/*.go logger/*.go version/*.go kpxc/*.go opass/*.go secret/*.go"
+SRC = ". ./cli/ ./logger/ ./version/ ./kpxc/ ./opass/ ./secret/"
 
 build: compile
 
@@ -42,7 +42,7 @@ sloc:
 	@wc -l *.go */*.go
 
 test:
-	@echo ${SRC} | xargs -n1 echo | grep -P "^\w+" | sed "s/\/.*//g" | awk '{print "./"$$0"/" }' | xargs go test -race
+	@echo ${SRC} | xargs -n1 go test -race
 
 install:
 	@glide install
