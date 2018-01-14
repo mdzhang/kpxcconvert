@@ -1,5 +1,6 @@
 Group,Title,Username,Password,URL,Notes
-Primary,Example Website Title,mdzhang@example.com,password1234,example.com,"Notes: """"
+Primary,Example Website Title,mdzhang@example.com,password1234,example.com,"Custom Fields: null
+Notes: """"
 URLs:
 - ex.com
 "

@@ -33,19 +33,21 @@ go get github.com/mdzhang/kpxcconvert
 
 ## What it does
 
-| 1Password entry type | Effects |
-| -------------------- | ------- |
-| login              | parse title, username, password, urls (extras go to KeePassXC notes field) |
-| password             | deliberately ignored |
-| router               | parse title, ssid as username, password |
-| secure notes         | parse title, notes |
-| credit cards         | X |
-| identities         | X |
-| licenses         | X |
-| SSN         | X |
-| bank account         | X |
-| email account         | X |
-| driver's licenses         | X |
+Will always parse 1Password titles. Username/password/URL depends on the 1Password entry type. Extra fields will always go into the `Notes` section as a yaml formatted string.
+
+| 1Password entry type | Supported | Summary | Username       | Password            | URL             | Notes        |
+| -------------------- | --------- | ------- | --------       | --------            | ---             | -----        |
+| login                | O         | --      | 1pass username | 1pass password      | 1pass first URL | +extra URLs  |
+| password             | O         | skipped | --             | --                  | --              | --           |
+| router               | O         | --      | SSID           | 1pass wifi password | --              | --           |
+| secure notes         | O         | --      | --             | --                  | --              | +1pass notes |
+| credit cards         | O         | --      | cardholder     | cc number           | --              | +cc fields   |
+| identities           | X         | --      | --             | --                  | --              | --           |
+| licenses             | X         | --      | --             | --                  | --              | --           |
+| SSN                  | X         | --      | --             | --                  | --              | --           |
+| bank account         | X         | --      | --             | --                  | --              | --           |
+| email account        | X         | --      | --             | --                  | --              | --           |
+| driver's licenses    | X         | --      | --             | --                  | --              | --           |
 
 ## Development
 

@@ -1,0 +1,133 @@
+{
+  "uuid": "AB9186C6DA6B4081A07FF937EFEF93F8",
+  "updatedAt": 1502481067,
+  "securityLevel": "SL5",
+  "contentsHash": "f0563ae",
+  "title": "My Driver's License",
+  "secureContents": {
+    "height": "6' 3\"",
+    "birthdate_dd": "21",
+    "sections": [
+      {
+        "fields": [
+          {
+            "k": "string",
+            "v": "Michelle Dan Zhang",
+            "n": "fullname",
+            "inputTraits": {
+              "autocapitalization": "words"
+            },
+            "t": "full name"
+          },
+          {
+            "k": "string",
+            "n": "address",
+            "inputTraits": {
+              "autocapitalization": "sentences"
+            },
+            "t": "address"
+          },
+          {
+            "k": "date",
+            "n": "birthdate",
+            "v": 111111111,
+            "t": "date of birth"
+          },
+          {
+            "k": "gender",
+            "n": "sex",
+            "v": "female",
+            "t": "sex"
+          },
+          {
+            "k": "string",
+            "n": "height",
+            "v": "6' 3\"",
+            "t": "height"
+          },
+          {
+            "k": "string",
+            "n": "number",
+            "v": "111 111 111",
+            "t": "number"
+          },
+          {
+            "k": "string",
+            "n": "class",
+            "v": "State ID",
+            "t": "license class"
+          },
+          {
+            "k": "string",
+            "n": "conditions",
+            "t": "conditions / restrictions"
+          },
+          {
+            "k": "string",
+            "n": "state",
+            "v": "CA",
+            "t": "state"
+          },
+          {
+            "k": "string",
+            "n": "country",
+            "v": "USA",
+            "t": "country"
+          },
+          {
+            "k": "monthYear",
+            "n": "expiry_date",
+            "t": "expiry date"
+          },
+          {
+            "k": "address",
+            "n": "AB9186C6DA6B4081A07FF937EFEF93F8",
+            "v": {
+              "street": "1 Infinite Loop",
+              "city": "Cupertino",
+              "country": "us",
+              "zip": "95014",
+              "state": "CA"
+            },
+            "t": "address"
+          },
+          {
+            "k": "string",
+            "n": "AB9186C6DA6B4081A07FF937EFEF93F8",
+            "v": "1/11/2011",
+            "t": "issue date"
+          },
+          {
+            "k": "string",
+            "n": "AB9186C6DA6B4081A07FF937EFEF93F8",
+            "v": "U11URV1N01",
+            "t": "document number"
+          },
+          {
+            "k": "string",
+            "n": "AB9186C6DA6B4081A07FF937EFEF93F8",
+            "v": "11/21/2022",
+            "t": "exp date"
+          }
+        ],
+        "title": "",
+        "name": ""
+      },
+      {
+        "title": "Related Items",
+        "name": "linked items"
+      }
+    ],
+    "birthdate_mm": "11",
+    "number": "111 111 111",
+    "country": "USA",
+    "class": "State ID",
+    "birthdate_yy": "1990",
+    "sex": "female",
+    "fullname": "Michelle Dan Zhang",
+    "state": "CA"
+  },
+  "txTimestamp": 1508717105,
+  "createdAt": 1439997242,
+  "typeName": "wallet.government.DriversLicense"
+}
