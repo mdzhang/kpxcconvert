@@ -7,6 +7,7 @@ import (
 	"github.com/mdzhang/kpxcconvert/logger"
 	"github.com/mdzhang/kpxcconvert/secret"
 	"os"
+	"reflect"
 	"strings"
 )
 
@@ -25,9 +26,14 @@ func ParseSecrets(f *os.File, grp string) []*secret.Secret {
 			continue
 		}
 
-		sec := parseSecret(line, grp)
+		sec, err := parseSecret(line, grp)
 
-		if sec != nil {
+		if err != nil {
+			logger.Warn(fmt.Sprintf("Skipping line due to error %s", err))
+			continue
+		}
+
+		if !reflect.ValueOf(sec).IsNil() {
 			ret = append(ret, sec)
 		}
 	}
@@ -35,13 +41,13 @@ func ParseSecrets(f *os.File, grp string) []*secret.Secret {
 	return ret
 }
 
-func parseSecret(line string, grp string) *secret.Secret {
+func parseSecret(line string, grp string) (sec *secret.Secret, err error) {
 	osec := Secret{}
 
-	if err := json.Unmarshal([]byte(line), &osec); err != nil {
-		panic(err)
+	if err = json.Unmarshal([]byte(line), &osec); err == nil {
+		sec := osec.secret(grp)
+		return sec, nil
 	}
 
-	sec := osec.secret(grp)
-	return sec
+	return nil, err
 }

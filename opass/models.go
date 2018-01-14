@@ -2,7 +2,6 @@ package opass
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/mdzhang/kpxcconvert/secret"
 	"strconv"
 )
@@ -135,8 +134,6 @@ func (osec *Secret) extras() map[string]string {
 	for _, s := range osec.SecureContents.Sections {
 		for _, f := range s.Fields {
 			if f.Value != "" {
-				fmt.Printf("name %s", f.Name)
-				fmt.Printf("value %s", f.Value)
 				extras[f.Name] = f.Value
 			}
 		}
